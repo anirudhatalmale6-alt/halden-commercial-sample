@@ -299,12 +299,16 @@ form .btn{margin-top:26px;width:100%;justify-content:center}
 }
 @media (max-width:900px){
   .nav,.hdr .tel{display:none}
-  .burger{display:flex}
+  .burger{display:flex;position:relative;z-index:80;background:var(--paper)}
   .hdr__in{justify-content:space-between}
   .brand .sub{display:none}
+  /* backdrop-filter on .hdr would make it the containing block for a fixed
+     child, collapsing the panel to header height - so drop it at this width. */
+  .hdr{backdrop-filter:none;background:var(--paper)}
   .nav.open{
     display:flex;flex-direction:column;position:fixed;inset:0 0 0 auto;width:min(82vw,340px);
-    background:var(--paper);border-left:1px solid var(--rule);padding:88px 28px 28px;gap:0;z-index:70;align-items:stretch;
+    background:var(--paper);border-left:1px solid var(--rule);padding:88px 28px 28px;gap:0;z-index:70;
+    align-items:stretch;overflow-y:auto;box-shadow:-24px 0 60px rgba(20,22,26,.18);
   }
   .nav.open a{font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid var(--rule)}
   .nav.open a::after{display:none}
